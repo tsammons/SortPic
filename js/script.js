@@ -22,8 +22,8 @@ var sortTracker = {
     stopClicked: false,
 };
 
-
-myImage.src = "https://pbs.twimg.com/media/FxthzezWcAA80NK?format=jpg&name=medium";
+//https://pbs.twimg.com/media/DUgTwnmXcAMQsXB?format=jpg&name=large
+myImage.src = "https://pbs.twimg.com/media/FxmT-FvXwAAMJcb?format=jpg&name=large";
 myImage.crossOrigin = "Anonymous";
 
 /*

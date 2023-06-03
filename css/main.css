@@ -3,6 +3,17 @@ body {
     padding: 0;
 }
 
+.pagename {
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    color: #0e1111;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -27,7 +38,6 @@ body {
 
 #drop_zone {
     border: 1px solid #aaaaaa;
-    width: 200px;
-    height: 40px;
+    height: 43px;
     margin-top: 15px;
 }
