@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>sorter</title>
+</head>
+<body>
+    <div class="container">
+        <div class="canvasWrapper">
+            <div>pixel chomp</div>
+            <canvas id="myCanvas"></canvas>
+            <div id="userinput">
+                <div
+                    id="drop_zone"
+                    ondrop="dropHandler(event);"
+                    ondragover="dragOverHandler(event);">
+                    <p><i>drop zone</i>.</p>
+                </div>
+                <div>
+                    <input type="text" id="inputUrl" placeholder="enter url" onkeypress="getUrl(event)">
+                </div>
+                <div>
+                    <button id="start" onclick="start()">
+                        go
+                    </button>
+                    <button id="start" onClick="stop()">
+                        stop
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <script src='js/script.js'></script>
+  <link rel="stylesheet" href="css/main.css">
+</body>
+</html

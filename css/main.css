@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.canvasWrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 90vw;
+}
+
+#myCanvas {
+    max-height: 80vh;
+}
+
+#userinput {
+    width: 150px;
+    max-width: 150px;
+}
+
+#drop_zone {
+    border: 1px solid #aaaaaa;
+    width: 200px;
+    height: 40px;
+    margin-top: 15px;
+}
