@@ -27,7 +27,7 @@ var sortTracker = {
 //https://pbs.twimg.com/media/DUgTwnmXcAMQsXB?format=jpg&name=large
 //myImage.src = "https://pbs.twimg.com/media/FxmT-FvXwAAMJcb?format=jpg&name=large";
 //myImage.src = "./assets/picassoBlue.jpeg";
-myImage.src = "./assets/sunset-unsplash.jpeg";
+myImage.src = "./assets/sunset-unsplash.jpg";
 
 myImage.crossOrigin = "Anonymous";
 
