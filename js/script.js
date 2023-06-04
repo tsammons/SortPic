@@ -32,7 +32,6 @@ myImage.src = "./assets/sunset-unsplash.jpg";
 myImage.crossOrigin = "Anonymous";
 
 /*
-s
     Sort Strategy:
     - merge sort on each row
     - merge sort on each column
@@ -108,15 +107,19 @@ function getHslRowData(rgbArray) {
             var r = rgbArray[index];
             var g = rgbArray[index+1];
             var b = rgbArray[index+2];
+            var a = rgbArray[index+3];
 
             var hsl = rgbToHsl(r, g, b);
-            hsl.push(r+g+b);
-            row.push(hsl);
+            hsl.push(r, g, b, a);
+
+            // Updated to only store hue, r, g, b
+            row.push([hsl[0], hsl[3], hsl[4], hsl[5]]);
         }
 
         var rowData = {A: row, B: []};
         hslArray.push(rowData);
     }
+    console.log(hslArray);
     return hslArray;
 }
 
@@ -225,7 +228,8 @@ function plotArrayRow(obj, rowNumber) {
     for (var i = 0; i < obj.A.length; i++) {
         var x = i;
         var y = rowNumber;
-        ctx.fillStyle = 'hsl(' + obj.A[i][0]+ ',' + obj.A[i][1] + '%, ' + obj.A[i][2] + '%)';
+        //ctx.fillStyle = 'hsl(' + obj.A[i][0]+ ',' + obj.A[i][1] + '%, ' + obj.A[i][2] + '%)';
+        ctx.fillStyle = 'rgb(' + obj.A[i][1]+ ',' + obj.A[i][2] + ', ' + obj.A[i][3] + ')';
         ctx.beginPath();
         ctx.fillRect(x + imgWidth, y, 1, 1);
         ctx.fill();
@@ -238,7 +242,9 @@ function plotArrayColumn(obj, columNum) {
     for (var i = 0; i < obj.A.length; i++) {
         var x = columNum;
         var y = i;
-        ctx.fillStyle = 'hsl(' + obj.A[i][0]+ ',' + obj.A[i][1] + '%, ' + obj.A[i][2] + '%)';
+        //ctx.fillStyle = 'hsl(' + obj.A[i][0]+ ',' + obj.A[i][1] + '%, ' + obj.A[i][2] + '%)';
+        //ctx.fillStyle = 'rgb(' + obj.A[i][3]+ ',' + obj.A[i][4] + ', ' + obj.A[i][5] + ',' + obj.A[i][6] / 255 + ')';
+        ctx.fillStyle = 'rgb(' + obj.A[i][1]+ ',' + obj.A[i][2] + ', ' + obj.A[i][3] + ')';
         ctx.beginPath();
         ctx.fillRect(x + imgWidth, y, 1, 1);
         ctx.fill();
