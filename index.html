@@ -4,29 +4,43 @@
   <title>sorter</title>
 </head>
 <body>
-    <div class="container">
-        <div class="canvasWrapper">
-            <div class="pagename">~~~</div>
-            <canvas id="myCanvas"></canvas>
+    <div class="pageContainer">
+
+        <div id = "topBar">
+
+            <div class="logo">
+                <div>
+                    <img class="logoImg" src = "./assets/pabloPicSortedCopy.png" />
+                </div>
+                <div class="pagename">PIXEL SORT</div>
+            </div>
+
+
             <div id="userinput">
-                <div
-                    id="drop_zone"
-                    ondrop="dropHandler(event);"
-                    ondragover="dragOverHandler(event);">
-                    <p><i>drop zone</i>.</p>
+                <div id="controlbuttons">
+                    <div id="playContainer">
+                        <svg version="1.1" id="playSvg" onclick="start()" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 100 100" xml:space="preserve"><path d="M78.158 51.843L25.842 82.048c-1.418.819-3.191-.205-3.191-1.843v-60.41c0-1.638 1.773-2.661 3.191-1.843l52.317 30.205c1.418.819 1.418 2.867-.001 3.686z" fill="#333"/></svg>
+                        <div>sort</div>
+                    </div>
+                    <div id="pauseContainer" >
+                        <svg height="512px" id="pauseSvg" onClick="stop()" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M224,435.8V76.1c0-6.7-5.4-12.1-12.2-12.1h-71.6c-6.8,0-12.2,5.4-12.2,12.1v359.7c0,6.7,5.4,12.2,12.2,12.2h71.6   C218.6,448,224,442.6,224,435.8z"/><path d="M371.8,64h-71.6c-6.7,0-12.2,5.4-12.2,12.1v359.7c0,6.7,5.4,12.2,12.2,12.2h71.6c6.7,0,12.2-5.4,12.2-12.2V76.1   C384,69.4,378.6,64,371.8,64z"/></g></svg>
+                        <div>stop</div>
+                    </div>
                 </div>
-                <div>
-                    <input type="text" id="inputUrl" placeholder="enter url" onkeypress="getUrl(event)">
-                </div>
-                <div>
-                    <button id="start" onclick="start()">
-                        go
-                    </button>
-                    <button id="start" onClick="stop()">
-                        stop
-                    </button>
+
+                <div class="selectImage">
+                    <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+                        <div id="droptext">drop a file</div>
+                    </div>
+                    <div>
+                        <input type="text" id="inputUrl" placeholder="enter url" onkeypress="getUrl(event)">
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <div id="canvasContainer">
+            <canvas id="myCanvas"></canvas>
         </div>
     </div>
 

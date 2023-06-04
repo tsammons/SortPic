@@ -3,41 +3,124 @@ body {
     padding: 0;
 }
 
-.pagename {
-    position: absolute;
-    top: 5px;
-    left: 15px;
-    color: #0e1111;
-    font-size: 24px;
-    font-family: Arial, Helvetica, sans-serif;
-
-
-}
-
-.container {
+.pageContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.canvasWrapper {
-    display: flex;
+    align-items: flex-start;
     flex-direction: column;
-    max-width: 90vw;
+    justify-content: flex-start;
+    padding-left: 25px;
+}
+
+#canvasContainer {
+    display: flex;
 }
 
 #myCanvas {
-    max-height: 80vh;
+    max-height: calc(100vh - 135px);
+    max-width: 90vw;
+}
+
+#topBar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 15px;
+    height: 100px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logoImg {
+    width: 150px;
+}
+
+.pagename {
+    display: flex;
+    align-self: flex-start;
+    color: #0e1111;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-top: 2px solid #0e1111;
+    width: 100%
 }
 
 #userinput {
-    width: 150px;
-    max-width: 150px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+}
+
+.selectImage {
+    display: flex;
+    padding-left: 25px;
+    align-items: flex-start;
 }
 
 #drop_zone {
-    border: 1px solid #aaaaaa;
-    height: 43px;
-    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    border-style: dashed;
+    /*border: 1px solid #aaaaaa;*/
+    height: 30px;
+    width: 150px;
+    margin-right: 10px;
+}
+
+#droptext {
+    margin-left: 10px;
+    font-size: 12px;
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#inputUrl {
+    height: 30px;
+    width: 150px;
+    padding: 0 0 0 0;
+    padding-left: 10px;
+}
+
+#controlbuttons {
+    display: flex;
+}
+
+#playContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50px;
+    height: 50px;
+}
+#playSvg {
+    width: 25px;
+    height: 30px;
+}
+#playSvg:hover {
+    width: 30px;
+}
+#playSvg:active {
+    width: 20px;
+}
+
+#pauseContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50px;
+    height: 50px;
+}
+#pauseSvg {
+    width: 25px;
+    height: 30px;
+}
+#pauseSvg:hover {
+    width: 30px;
+}
+#pauseSvg:active {
+    width: 20px;
 }

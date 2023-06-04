@@ -19,7 +19,6 @@ var sortTracker = {
     n: 0,
     transformed: false,
     newImageReady: false,
-    stopClicked: false,
 };
 
 //https://pbs.twimg.com/media/DUgTwnmXcAMQsXB?format=jpg&name=large
@@ -32,6 +31,12 @@ s
     - merge sort on each row
     - merge sort on each column
 
+
+    ToDo:
+    - play / pause
+    - styling
+    - logo
+    - high res render?
 */
 
 myImage.onload = () => {
@@ -119,12 +124,6 @@ function BottomUpMergeSort(n, transformed = false) {
 
 function sortInterval() {
     myInterval = setInterval(() => {
-
-        if (sortTracker.stopClicked) {
-            clearInterval(myInterval);
-            myInterval = null;
-            sortTracker.stopClicked = false;
-        }
 
         if (sortTracker.width < sortTracker.n) {
             if (sortTracker.i < sortTracker.n) {
@@ -269,7 +268,8 @@ const rgbToHsl = (r, g, b) => {
   }
 
   function stop() {
-    sortTracker.stopClicked = true;
+    clearInterval(myInterval);
+    myInterval = null;
   }
 
   // drag + drop
