@@ -17,7 +17,7 @@ body {
 
 #myCanvas {
     display: flex;
-    max-height: calc(100vh - 165px);
+    max-height: calc(100vh - 125px);
     max-width: 90vw;
 }
 
@@ -26,7 +26,7 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     margin-top: 15px;
-    height: 90px;
+    height: 70px;
 }
 
 .logo {
@@ -70,8 +70,7 @@ body {
     /*border: 1px solid #aaaaaa;*/
     height: 46px;
     width: 150px;
-    margin-top: 0px;
-    padding-top: 0px;
+    padding-right: 10px;
 }
 
 #droptext {
@@ -86,7 +85,7 @@ body {
     width: 150px;
     padding: 0 0 0 0;
     padding-left: 10px;
-    display: none;
+    display: flex;
 }
 
 #controlbuttons {
