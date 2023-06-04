@@ -11,7 +11,8 @@ var imgWidth = 0,
     globalHslArray = [],
     maxPixels = 1000 * 1000,
     myInterval = null,
-    myImage = new Image();
+    myImage = new Image(),
+    pixelData;
 
 var sortTracker = {
     width: 1,
@@ -19,10 +20,14 @@ var sortTracker = {
     n: 0,
     transformed: false,
     newImageReady: false,
+    sortComplete: false
 };
 
+//https://pbs.twimg.com/media/Fxv3tt0WcAItWFE?format=jpg&name=medium
 //https://pbs.twimg.com/media/DUgTwnmXcAMQsXB?format=jpg&name=large
-myImage.src = "https://pbs.twimg.com/media/FxmT-FvXwAAMJcb?format=jpg&name=large";
+//myImage.src = "https://pbs.twimg.com/media/FxmT-FvXwAAMJcb?format=jpg&name=large";
+myImage.src = "./../assets/picassoBlue.jpeg";
+
 myImage.crossOrigin = "Anonymous";
 
 /*
@@ -85,7 +90,7 @@ myImage.onload = () => {
 
 
   const imgData = ctx.getImageData(0,0,imgWidth,imgHeight);
-  var pixelData = [...imgData.data];
+  pixelData = [...imgData.data];
 
   globalHslArray = getHslRowData(pixelData);
   sortTracker.newImageReady = true;
@@ -104,6 +109,7 @@ function getHslRowData(rgbArray) {
             var b = rgbArray[index+2];
 
             var hsl = rgbToHsl(r, g, b);
+            hsl.push(r+g+b);
             row.push(hsl);
         }
 
@@ -118,6 +124,7 @@ function BottomUpMergeSort(n, transformed = false) {
     sortTracker.transformed = transformed;
     sortTracker.width = 1;
     sortTracker.i = 0;
+    sortTracker.sortComplete = false;
 
     sortInterval();
 }
@@ -152,6 +159,9 @@ function sortInterval() {
 
             if (!sortTracker.transformed) {
                 transformToColumnMatrix();
+            } else {
+                sortTracker.sortComplete = true;
+                showPlay(true);
             }
         }
     }, interval);
@@ -256,20 +266,44 @@ const rgbToHsl = (r, g, b) => {
 
   // controls
   function start() {
+    if (sortTracker.sortComplete) {
+        globalHslArray = getHslRowData(pixelData);
+        BottomUpMergeSort(imgWidth);
+        showPlay(false);
+        return;
+    }
+
     if (sortTracker.newImageReady) {
         BottomUpMergeSort(imgWidth);
         sortTracker.newImageReady = false;
+        showPlay(false);
         return;
     }
 
     if (myInterval === null) {
         sortInterval();
+        showPlay(false);
     }
   }
 
   function stop() {
     clearInterval(myInterval);
     myInterval = null;
+
+    showPlay(true);
+  }
+
+  function showPlay(showPlay) {
+    var playEl = document.getElementById("playContainer");
+    var pauseEl = document.getElementById("pauseContainer");
+
+    if (showPlay) {
+        playEl.style.display = "flex";
+        pauseEl.style.display = "none";
+    } else {
+        playEl.style.display = "none";
+        pauseEl.style.display = "flex";
+    }
   }
 
   // drag + drop
