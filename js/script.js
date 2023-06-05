@@ -28,7 +28,7 @@ var sortTracker = {
 //myImage.src = "https://pbs.twimg.com/media/FxmT-FvXwAAMJcb?format=jpg&name=large";
 //myImage.src = "./assets/picassoBlue.jpeg";
 //myImage.src = "./assets/sunset-unsplash.jpg";
-myImage.src = "./assets/field.jpg";
+myImage.src = "./assets/field.jpeg";
 
 myImage.crossOrigin = "Anonymous";
 
