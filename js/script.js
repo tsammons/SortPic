@@ -1,7 +1,7 @@
 "use strict";
 var ctx, canvas;
 canvas = document.getElementById('myCanvas');
-ctx = myCanvas.getContext('2d');
+ctx = myCanvas.getContext('2d', { willReadFrequently: true });
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
