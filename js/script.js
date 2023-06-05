@@ -119,7 +119,6 @@ function getHslRowData(rgbArray) {
         var rowData = {A: row, B: []};
         hslArray.push(rowData);
     }
-    console.log(hslArray);
     return hslArray;
 }
 
