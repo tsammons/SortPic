@@ -141,3 +141,12 @@ body {
 #pauseSvg:active {
     width: 20px;
 }
+
+#download {
+    align-self: flex-end;
+    margin-bottom: -17px;
+}
+#downloadSvg {
+    height: 50px;
+    width: auto;
+}

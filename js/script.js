@@ -343,3 +343,10 @@ const rgbToHsl = (r, g, b) => {
         document.getElementById("inputUrl").value = "";
     }
   }
+
+  var download = function(){
+    var link = document.createElement('a');
+    link.download = 'filename.png';
+    link.href = document.getElementById('myCanvas').toDataURL()
+    link.click();
+  }
