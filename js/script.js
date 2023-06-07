@@ -5,6 +5,10 @@ ctx = myCanvas.getContext('2d', { willReadFrequently: true });
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+$(document).ready(function() {
+    $('select').niceSelect();
+  });
+
 var imgWidth = 0, 
     imgHeight = 0, 
     interval = 100, 
@@ -23,12 +27,14 @@ var sortTracker = {
     sortComplete: false
 };
 
+var uniquePixelColors = {};
+
 //https://pbs.twimg.com/media/Fxv3tt0WcAItWFE?format=jpg&name=medium
 //https://pbs.twimg.com/media/DUgTwnmXcAMQsXB?format=jpg&name=large
 //myImage.src = "https://pbs.twimg.com/media/FxmT-FvXwAAMJcb?format=jpg&name=large";
 //myImage.src = "./assets/picassoBlue.jpeg";
 //myImage.src = "./assets/sunset-unsplash.jpg";
-myImage.src = "./assets/field.jpeg";
+myImage.src = "./assets/red-flower.jpg";
 
 myImage.crossOrigin = "Anonymous";
 
@@ -48,6 +54,12 @@ myImage.crossOrigin = "Anonymous";
 myImage.onload = () => {
   imgWidth = myImage.width, imgHeight = myImage.height;
   console.log(imgWidth, imgHeight);
+
+  if (imgWidth / imgHeight >= 1.4) {
+    document.getElementById("canvasContainer").style.paddingTop = "25px";
+  } else {
+    document.getElementById("canvasContainer").style.paddingTop = "0px";
+  }
 
   if (imgWidth * imgHeight > maxPixels) {
     console.log("TOO BIG, RESIZING");
@@ -115,12 +127,32 @@ function getHslRowData(rgbArray) {
 
             // Updated to only store hue, r, g, b
             row.push([hsl[0], hsl[3], hsl[4], hsl[5]]);
+
+            // create dict of all colors
+            var rgbString = JSON.stringify({"r":r,"g":g,"b":b});
+            if (rgbString in uniquePixelColors) {
+                uniquePixelColors[rgbString] += 1;
+            } else {
+                uniquePixelColors[rgbString] = 1;
+            }
         }
 
         var rowData = {A: row, B: []};
         hslArray.push(rowData);
     }
+    var sortedCounts = sortPixelCounts(uniquePixelColors);
     return hslArray;
+}
+
+function sortPixelCounts(dict) {
+    var keyValues = []
+    for (var key in dict) {
+      keyValues.push([ key, dict[key] ])
+    }
+    var sortedVals = keyValues.sort(function compare(kv1, kv2) {
+        return kv2[1] - kv1[1]
+    });
+    return sortedVals;
 }
 
 function BottomUpMergeSort(n, transformed = false) {
@@ -272,6 +304,27 @@ const rgbToHsl = (r, g, b) => {
   };
 
   // controls
+  function onSelect() {
+    var x = document.getElementById("selectDropdown").value;
+    console.log(x);
+
+    clearInterval(myInterval);
+    myInterval = null;
+
+    switch(x) {
+        case "0":
+            myImage.src = "./assets/red-flower.jpg";
+            break;
+        case "1": 
+            myImage.src = "./assets/ocean-coast.jpg";
+            break;
+        case "2":
+            myImage.src = "./assets/white-flower.jpg";
+            break;
+    }
+  }
+
+
   function start() {
     if (sortTracker.sortComplete) {
         globalHslArray = getHslRowData(pixelData);
@@ -292,6 +345,8 @@ const rgbToHsl = (r, g, b) => {
         showPlay(false);
     }
   }
+
+
 
   function stop() {
     clearInterval(myInterval);

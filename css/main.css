@@ -55,12 +55,19 @@ body {
 }
 
 .selectImage {
+    display: flex;
+    flex-direction: row;
     position: absolute;
     right: 25px;
     /*
     display: flex;
     align-items: flex-start;
     */
+}
+
+#selectPic {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 25px;
 }
 
 #drop_zone {
@@ -72,7 +79,6 @@ body {
     width: 150px;
     padding-right: 10px;
 }
-
 #droptext {
     margin-left: 10px;
     font-size: 12px;
@@ -106,7 +112,7 @@ body {
 #playSvg {
     width: 25px;
     height: 30px;
-    margin-top: -6px;
+    /*margin-top: -6px;*/
 }
 #playSvg > path{
     fill:#0e1111;
@@ -130,7 +136,7 @@ body {
 #pauseSvg {
     width: 25px;
     height: 30px;
-    margin-top: -6px;
+    /*margin-top: -6px;*/
 }
 #pauseSvg > g > path{
     fill:#0e1111;

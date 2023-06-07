@@ -2,7 +2,10 @@
 <html>
 <head>
   <title>sorter</title>
-  <link rel="stylesheet" href="css/main.css">
+  <script src="./niceSelect/jquery.js"></script> 
+  <script src="./niceSelect/jquery.nice-select.min.js"></script>
+  <link rel="stylesheet" href="./niceSelect/nice-select.css">
+  <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
     <!--
@@ -21,6 +24,14 @@
 
 
             <div id="userinput">
+
+                <div id="selectPic">
+                    <select id="selectDropdown" onchange="onSelect()">
+                        <option value="0">Red Flower</option>
+                        <option value="1">Ocean Coast</option>
+                        <option value="2">White Flower</option>
+                    </select>
+                </div>
 
                 <div id="controlbuttons">
                     <div id="playContainer">
