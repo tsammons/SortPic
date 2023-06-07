@@ -57,9 +57,9 @@ body {
 .selectImage {
     display: flex;
     flex-direction: row;
+    /*
     position: absolute;
     right: 25px;
-    /*
     display: flex;
     align-items: flex-start;
     */
@@ -67,7 +67,7 @@ body {
 
 #selectPic {
     font-family: Arial, Helvetica, sans-serif;
-    margin-right: 25px;
+    margin-right: 5px;
 }
 
 #drop_zone {
@@ -99,6 +99,7 @@ body {
     font-size: 14px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #0e1111;
+    margin-left: 15px;
 }
 
 #playContainer {
