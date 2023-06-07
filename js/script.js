@@ -129,18 +129,18 @@ function getHslRowData(rgbArray) {
             row.push([hsl[0], hsl[3], hsl[4], hsl[5]]);
 
             // create dict of all colors
-            var rgbString = JSON.stringify({"r":r,"g":g,"b":b});
-            if (rgbString in uniquePixelColors) {
-                uniquePixelColors[rgbString] += 1;
-            } else {
-                uniquePixelColors[rgbString] = 1;
-            }
+            //var rgbString = JSON.stringify({"r":r,"g":g,"b":b});
+            //if (rgbString in uniquePixelColors) {
+            //    uniquePixelColors[rgbString] += 1;
+            //} else {
+            //    uniquePixelColors[rgbString] = 1;
+            //}
         }
 
         var rowData = {A: row, B: []};
         hslArray.push(rowData);
     }
-    var sortedCounts = sortPixelCounts(uniquePixelColors);
+    //var sortedCounts = sortPixelCounts(uniquePixelColors);
     return hslArray;
 }
 
